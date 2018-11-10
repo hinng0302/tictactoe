@@ -1,0 +1,78 @@
+@layout('master')
+
+@section('title')
+    Welcome to Room {{room_id}}
+@endsection
+
+@section('body')
+
+    <div class="onboard">
+        <div class="container">
+            <div class="row">
+                <h2>Room {{room_id}}</h2>
+            </div>
+            {{--  
+                this part is the board
+            --}}
+            <div class="row">
+                @each(x in range(1,4))
+                    <div class="col-4">
+                        @if(x==2)
+                            ||
+                        @endif
+                        <button class="btn btn-primary" id="button_{{x}}">{{x}}</button>
+                        @if(x==2)
+                            ||
+                        @endif
+                    </div>
+                @endeach
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <br>
+                    <hr />
+                </div>
+            </div>
+            <div class="row">
+                @each(x in range(4,7))
+                    <div class="col-4">
+                        @if(x==5)
+                        ||
+                        @endif
+                        <button class="btn btn-primary" id="button_{{x}}">{{x}}</button>
+                        @if(x==5)
+                        ||
+                        @endif
+                    </div>
+                @endeach
+            </div>
+            <div class="row">
+                    <div class="col-12">
+                        <br>
+                        <hr />
+                    </div>
+                </div>
+            <div class="row">
+                @each(x in range(7,10))
+                    <div class="col-4">
+                        @if(x==8)
+                        ||
+                        @endif
+                        <button class="btn btn-primary" id="button_{{x}}">{{x}}</button>
+                        @if(x==8)
+                        ||
+                        @endif
+                    </div>
+                @endeach
+            </div>
+            <div class="chat">
+                <div class="title">
+                </div>
+            </div>
+        </div>
+    </div>
+    {{ script('https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.26.0/polyfill.min.js') }}
+    {{ script('https://unpkg.com/@adonisjs/websocket-client@1.0.9/dist/Ws.browser.js') }}
+    {{ script('https://unpkg.com/jquery@3.3.1/dist/jquery.js') }}
+    {{ script('chat.js') }}
+@endsection

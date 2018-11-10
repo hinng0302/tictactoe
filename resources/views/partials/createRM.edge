@@ -1,0 +1,12 @@
+@set('username', request.input('username'))
+<form action="{{ route('RoomSelectController.createroom')}}" method="post">
+    <input type="hidden" name="username" value="{{username}}">
+    {{ csrfField() }}
+    <div class="form-group">
+        <label for="Room_Name">Room Name:</span>
+        <input class="form-control" type="text" id="Room_Name" name="Room_Name" placeholder="Enter your Room Name" autofocus=1 value='Come and Play'>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Create!" class="btn btn-primary form-control">
+    </div>
+</form>

@@ -1,0 +1,23 @@
+
+<div class="row">
+    <div class="col-2">
+        <div>{{rm.playOneName.username}}</div>
+    </div>
+    <div class="col-1">
+        <div>VS</div>
+    </div>
+    @if(rm.playTwoName == null)
+            <div class="col-4">
+                <a href="/room?room_id={{rm.room_id}}&username={{username}}&type=player_2"><button class="btn btn-primary join">{{rm.room_name}}</button></a>
+            </div>
+    @else 
+        <div class="col-2">
+            {{rm.playTwoName.username}}
+        </div>
+    @endif
+    
+    <div class="col-3">
+        <a href="/room?room_id={{rm.room_id}}&username={{username}}&type=viewer"><button class="btn btn-primary join">View Battle</button></a>
+    </div>
+</div>
+<hr />
