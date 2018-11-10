@@ -4,6 +4,9 @@ class RoomSelectController {
     async index({session, response}){
         if(session.get('logined') == 'false'){
             response.redirect('/')
+        } else {
+            let username = session.get('username')
+            response.redirect('/?username='+username)
         }
     }
 

@@ -17,10 +17,11 @@ class LoginController {
             var user = await User.query().where('username', username).whereRaw('password=md5(?)', [password]).first()
             user = user.toJSON()
             console.log(user)
-            
             if(user){
-                    session.put('logined', 'true')
-                    response.redirect('/selectroom')
+                console.log('success')
+                await session.put('username', username)
+                await session.put('logined', 'true')
+                response.redirect('/selectroom')
             } else {
                 response.status(403).json({error: 'Username/Password error'})
             }
