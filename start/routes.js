@@ -17,7 +17,7 @@
 const Route = use('Route')
 
 Route.get('/', 'LoginController.index')
-Route.on('/regist_page').render('newregister')
+Route.get('/regist_page', 'LoginController.regist_page')
 Route.post('/login', 'LoginController.login')
 Route.post('/ologin', 'LoginController.otherLogin')
 Route.post('/register', 'LoginController.newregister')

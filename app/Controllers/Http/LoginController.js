@@ -8,6 +8,9 @@ class LoginController {
         console.log(rm)
         return view.render('welcome', {title:'welcome', rm_lists: rm})// , {room_lists: rm})
     }
+    async regist_page({view}){
+        return view.render('newregister')//, { "title":'New Register' })
+    }
     async login({request, session, response}){
         var {username, password} = request.all(['username', 'password'])
         try{
