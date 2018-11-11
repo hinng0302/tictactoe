@@ -1,10 +1,10 @@
 
 <div class="row">
     <div class="col-2">
-        <div>{{rm.playOneName.username}}</div>
+        <div  class="title">{{rm.playOneName.username}}</div>
     </div>
     <div class="col-1">
-        <div>VS</div>
+        <div class="title">VS</div>
     </div>
     @if(rm.playTwoName == null)
             <div class="col-4">
@@ -12,7 +12,7 @@
             </div>
     @else 
         <div class="col-2">
-            {{rm.playTwoName.username}}
+            <p class="title">{{rm.playTwoName.username}}</p>
         </div>
     @endif
     
