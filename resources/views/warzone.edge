@@ -9,18 +9,19 @@
     <div class="onboard">
         <div class="container">
             <div class="row">
-                <h2 class="title">Room {{room_id}}</h2>
+                <h2 class="title">Room {{room_id}} </h2>
             </div>
-            {{--  
-                this part is the board
-            --}}
             <div class="row">
                 @each(x in range(1,4))
                     <div class="col-4">
                         @if(x==2)
                             ||
                         @endif
-                        <button class="btn btn-primary" id="button_{{x}}">{{x}}</button>
+                        <button class="btn btn-primary" id="button_{{x}}"
+                        @if( type == 'viewer')
+                            disabled
+                        @endif
+                        >{{x}}</button>
                         @if(x==2)
                             ||
                         @endif
@@ -28,10 +29,7 @@
                 @endeach
             </div>
             <div class="row">
-                <div class="col-12">
-                    <br>
-                    <hr />
-                </div>
+                <div class="col-12" style="display: block;height: 1px;border: 0;border-top: 1px solid #ccc;margin: 1em 0;padding: 0;"></div>
             </div>
             <div class="row">
                 @each(x in range(4,7))
@@ -39,7 +37,11 @@
                         @if(x==5)
                         ||
                         @endif
-                        <button class="btn btn-primary" id="button_{{x}}">{{x}}</button>
+                        <button class="btn btn-primary" id="button_{{x}}" 
+                        @if( type == 'viewer')
+                            disabled
+                        @endif
+                        >{{x}}</button>
                         @if(x==5)
                         ||
                         @endif
@@ -47,18 +49,19 @@
                 @endeach
             </div>
             <div class="row">
-                    <div class="col-12">
-                        <br>
-                        <hr />
-                    </div>
-                </div>
+                <div class="col-12" style="display: block;height: 1px;border: 0;border-top: 1px solid #ccc;margin: 1em 0;padding: 0;"></div>
+            </div>
             <div class="row">
                 @each(x in range(7,10))
                     <div class="col-4">
                         @if(x==8)
                         ||
                         @endif
-                        <button class="btn btn-primary" id="button_{{x}}">{{x}}</button>
+                        <button class="btn btn-primary" id="button_{{x}}"
+                        @if( type == 'viewer')
+                            disabled
+                        @endif
+                        >{{x}}</button>
                         @if(x==8)
                         ||
                         @endif
