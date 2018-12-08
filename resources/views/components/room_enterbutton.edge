@@ -17,15 +17,13 @@
     @endif
     
     <div class="col-2">
-        
         @if(username == rm.playTwoName.username)
             <a href="/room?room_id={{rm.room_id}}&username={{username}}&type=player_2"><button class="btn btn-primary join">Back to game</button></a>
         @elseif(username == rm.playOneName.username)
             <a href="/room?room_id={{rm.room_id}}&username={{username}}&type=player_1"><button class="btn btn-primary join">Back to game</button></a>
         @else 
-
             <a href="/room?room_id={{rm.room_id}}&username={{username}}&type=viewer"><button class="btn btn-primary join">View Battle</button></a>
         @endif
     </div>
 </div>
-<hr />
+<hr/>
