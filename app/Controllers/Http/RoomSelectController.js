@@ -27,12 +27,26 @@ class RoomSelectController {
         room.room_name = post_value.Room_Name
         room.room_status = 'waiting'
         await room.save()
-        response.redirect('/?username='+post_value.username)
+        let room_id = room.id
+        response.redirect('/room?room_id='+room_id+'&username='+post_value.username)
     }
 
     async warzone({request, view}){
         const getRequest = request.get()
         console.log(getRequest)
+        let room_id = getRequest.room_id
+        let username = getRequest.username
+        let type = getRequest.type
+        if(type == 'player_2'){
+            const Room = use('App/Models/Room')
+            const USER = use('App/Models/User')
+            let user = await USER.query().where('username', username).first()
+            let user_id = user.id
+            let room = await Room.query().where('room_id', room_id).first()
+            room.player_2 = user_id
+            
+            await room.save()
+        }
         return view.render('warzone', getRequest)
     }
 }
