@@ -50,14 +50,20 @@ $('#message').keyup(function (e) {
 })
 
 $('button').on('click', function(){
-	var name=$(this).attr('name')
-    console.log(name)
+	let button_id = this.id
+	console.log(button_id)
+	var vars = {}
+	var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+        vars[key] = value;
+    });
+    console.log(vars)
     const urlParams = new URLSearchParams(window.location.search);
     const myParam = urlParams.get('myParam');
     console.log(myParam)
-	ws.getSubscription('chat:Room_'+myParam.room_id).emit('message', {
-		username: window.username,
+	ws.getSubscription('chat:'+vars.room_id).emit('message', {
+		username: vars.username,
 		body: name,
-		type: "gamer"
+		type: vars.type,
 	})
+	return 
 })

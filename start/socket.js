@@ -15,4 +15,4 @@
 
 const Ws = use('Ws')
 
-Ws.channel('chat', 'RmSocketController')
+Ws.channel('chat:*', 'ChatController')
