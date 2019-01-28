@@ -75,6 +75,18 @@ class LoginController {
             })
         }
     }
+    async test({response}){
+        const Redis = use('Redis')
+        var testkey = 'test'
+        var msg = await Redis.get(testkey)
+        if(msg){
+            msg = 'true'
+        } else {
+            await Redis.set(testkey, 'dfsdf', 'EX', 10)
+            msg = await Redis.get(testkey)
+        }
+        response.json({message: msg})
+    }
 }
 
 module.exports = LoginController
