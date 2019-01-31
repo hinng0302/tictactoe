@@ -1,5 +1,10 @@
 let we = null
-
+$(function(){
+	for (let index = 1; index <= 9; index++) {
+		if(window.type != 'player_1')
+			$("#button_"+index).addClass('disabled');
+	}
+})
 $(function(){
 	if(window.username){
 		startChat()
@@ -33,32 +38,46 @@ function subscribeToChannel() {
 			for (let index = 0; index < array.length; index++) {
 				let id = index+1;
 				if(array[index] == 'x' || array[index] == 'o'){
-					document.getElementById("button_"+id).disabled = true;
+					$("#button_"+id).addClass('disabled');
 				} else {
-					document.getElementById("button_"+id).disabled = false;
+					$("#button_"+id).removeClass('disabled');
 				}
 				if(message['nextplayer'] != (window.type == 'player_1'? 'x': 'o')){
-					document.getElementById("button_"+id).disabled = true;
+					$("#button_"+id).addClass('disabled');
 				}
 				$('#button_'+id).text(array[index]);
 				if(!(window.type == 'player_1' || window.type == 'player_2')){
-					document.getElementById("button_"+id).disabled = true;
+					$("#button_"+id).removeClass('disabled');
 				}
 			}
-			let win_array = [
-				[0,1,2],
-				[3,4,5],
-				[6,7,8],
-				[0,3,6],
-				[1,3,7],
-				[2,5,8],
-				[0,4,8],
-				[2,4,6]
-			]
-			for(let win_object of win_array){
-				if(array[win_object[0]] == array[win_object[1]] && array[win_object[0]] == array[win_object[2]]) {
-					alert((array[win_object[0]] == 'x'? 'player 1': 'player 2')+' win!!, Game End')
+		}
+		let win_array = [
+			[0,1,2],
+			[3,4,5],
+			[6,7,8],
+			[0,3,6],
+			[1,3,7],
+			[2,5,8],
+			[0,4,8],
+			[2,4,6]
+		]
+		for(let win_object of win_array){
+			let array = message.array_of_value;
+			if(array[win_object[0]] == array[win_object[1]] && array[win_object[0]] == array[win_object[2]]) {
+				alert((array[win_object[0]] == 'x'? 'player 1': 'player 2')+' win!!, Game End');
+				let winner = (array[win_object[0]] == 'x'? 'player 1': 'player 2');
+				$.ajax({url:'/finishRoom/'+window.room_id})
+				for (let index = 1; index <= 9; index++) {
+					$("#button_"+index).addClass('disabled');
 				}
+				let alert_message = winner+' win!!, Game End, \n Do you want to play one more time?'
+				if (confirm(alert_message)) {
+					// /newRm?username=admin
+					window.location.replace('/newRm?username='+window.username)
+				  } else {
+					// /?username=admin
+					window.location.replace('/?username='+window.username)
+				  }
 			}
 		}
 	})

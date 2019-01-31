@@ -11,7 +11,9 @@
 <body>
     @set('username', request.input('username'))
     @set('newregist', request.input('newregist'))
-  <section>
+{{--    
+    <section>
+      --}}
     @section('body')
       @if(username)
         <div class="onboard">
@@ -93,6 +95,8 @@
         </div>
       @endif
     @endsection
+{{--    
   </section>
+    --}}
 </body>
 </html>

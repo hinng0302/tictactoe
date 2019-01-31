@@ -8,6 +8,15 @@ class LoginController {
         console.log(rm)
         return view.render('welcome', {title:'welcome', rm_lists: rm})// , {room_lists: rm})
     }
+    async finishRoom({params, response}){
+        // finish
+        const ROOM = use('App/Models/Room')
+        await ROOM.query().update({room_status: 'finish'}).where('room_id', parseInt(params.room_id))
+        response.json({
+            room_id: parseInt(params.room_id),
+            room_status: 'finish'
+        })
+    }
     async regist_page({view}){
         return view.render('newregister')//, { "title":'New Register' })
     }

@@ -27,8 +27,8 @@ class RoomSelectController {
         room.room_name = post_value.Room_Name
         room.room_status = 'waiting'
         await room.save()
-        
-        response.redirect('/room?room_id=1&username='+post_value.username)
+        let room_id = room.id
+        response.redirect('/room?room_id='+room_id+'&type=player_1&username='+post_value.username)
     }
 
     async warzone({request, view}){
