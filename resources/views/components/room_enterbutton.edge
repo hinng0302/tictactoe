@@ -1,22 +1,22 @@
 
 <div class="row">
-    <div class="col-4">
+    <div class="col-3">
         <div  class="title">{{rm.playOneName.username}}</div>
     </div>
     <div class="col-2">
         <div class="title">VS</div>
     </div>
     @if(rm.playTwoName == null)
-            <div class="col-4">
+            <div class="col-3">
                 <a href="/room?room_id={{rm.room_id}}&username={{username}}&type=player_2"><button class="btn btn-primary join">{{rm.room_name}}</button></a>
             </div>
     @else 
-        <div class="col-4">
+        <div class="col-3">
             <p class="title">{{rm.playTwoName.username}}</p>
         </div>
     @endif
     
-    <div class="col-2">
+    <div class="col-4">
         @if(username == rm.playTwoName.username)
             <a href="/room?room_id={{rm.room_id}}&username={{username}}&type=player_2"><button class="btn btn-primary join">Back to game</button></a>
         @elseif(username == rm.playOneName.username)

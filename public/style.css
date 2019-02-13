@@ -48,16 +48,16 @@ section:before {
 }
 
 .title {
-  font-size: 30px;
+  font-size: 1.2em;
   color: white;
-  width: 219px;
-  height: 36px;
+  width: 100%;
+  height: 100%;
   background-size: 100%;
   opacity: 0;
   animation: slideUp 1s cubic-bezier(0.19, 1, 0.30, 1) 0.2s forwards;
 }
 p.title{
-  width: 300px;
+  width: 100%;
 }
 .subtitle {
   margin-top: 25px;
@@ -99,7 +99,7 @@ p.title{
 }
 
 .onboard input {
-  font-size: 32px;
+  font-size: 1.5em;
   background: transparent;
   border: none;
   padding: 0 40px;
